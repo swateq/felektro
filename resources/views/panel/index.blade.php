@@ -7,6 +7,10 @@
 
 @section('content')
 <div class="container w-full mx-auto px-2">
+    <div class="mb-8">
+        <a href="/" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Aktualne</a>
+        <a href="/?archive" class="bg-transparent bg-blue-500 hover:bg-blue-600 hover:text-white font-semibold text-white hover:text-black py-2 px-4 border hover:border-blue-500 border-transparent rounded">Archiwalne</a>
+    </div>
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
            <thead>
@@ -25,32 +29,21 @@
                </tr>
            </thead>
            <tbody>
-               <tr>
-                   <td>2019-10-24 10:59</td>
-                   <td>ZK 1/1566/mag/10/2019</td>
-                   <td>F3.0052</td>
-                   <td>nazwa z subiekta</td>
-                   <td>PORTO</td>
-                   <td>w produkcji</td>
-                   <td>7</td>
-                   <td>2</td>
-                   <td>5</td>
-                   <td>0</td>
-                   <td>Zrobię</td>
-               </tr>
-               <tr>
-                   <td>2019-10-27 15:59</td>
-                   <td>ZK 2/1566/mag/10/2019</td>
-                   <td>F5.5785</td>
-                   <td>nazwa z subiekta</td>
-                   <td>el-corte</td>
-                   <td>nowe</td>
-                   <td>10</td>
-                   <td>0</td>
-                   <td>0</td>
-                   <td>10</td>
-                   <td>Zrobię</td>
-               </tr>
+               @foreach ($orders as $order)
+                <tr>
+                    <td>{{ $order->accepted_date }}</td>
+                    <td>{{ $order->subiekt_number }}</td>
+                    <td>{{ $order->symbol }}</td>
+                    <td>{{ $order->product_id }}</td>
+                    <td>{{ $order->client }}</td>
+                    <td>{{ $order->status }}</td>
+                    <td>{{ $order->quantity }}</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Zrobię</td>
+                </tr>
+               @endforeach
            </tbody>
        </table>
    </div>
