@@ -1,6 +1,24 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<title>{{ config('app.name') }} - Login</title>
+
+<!-- Styles -->
+<link href="{{ mix('css/app.css') }}" rel="stylesheet">
+<body>
+    <nav class="bg-blue-900 shadow mb-8 py-6">
+        <div class="container mx-auto px-6 md:px-0"> 
+            <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
+                {{ config('app.name') }}
+            </a>
+        </div>
+    </nav>
     <div class="container mx-auto">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
@@ -41,37 +59,16 @@
                             @enderror
                         </div>
 
-                        <div class="flex mb-6">
-                            <label class="inline-flex items-center text-sm text-gray-700" for="remember">
-                                <input type="checkbox" name="remember" id="remember" class="form-checkbox" {{ old('remember') ? 'checked' : '' }}>
-                                <span class="ml-2">{{ __('Remember Me') }}</span>
-                            </label>
-                        </div>
-
-                        <div class="flex flex-wrap items-center">
+                        <div>
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 {{ __('Login') }}
                             </button>
-
-                            @if (Route::has('password.request'))
-                                <a class="text-sm text-blue-500 hover:text-blue-700 whitespace-no-wrap no-underline ml-auto" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <p class="w-full text-xs text-center text-gray-700 mt-8 -mb-4">
-                                    {{ __("Don't have an account?") }}
-                                    <a class="text-blue-500 hover:text-blue-700 no-underline" href="{{ route('register') }}">
-                                        {{ __('Register') }}
-                                    </a>
-                                </p>
-                            @endif
                         </div>
+
                     </form>
 
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</body>
