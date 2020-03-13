@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\MainOrder;
 
 class PanelController extends Controller
 {
@@ -17,12 +18,15 @@ class PanelController extends Controller
             }
         }elseif(\Gate::allows('isOffice')){
             if(request()->has('archive')){
-                return view('panel.office.index', ['orders' => Order::where('archive','1')->get()]);
+                return view('panel.office.index', ['main_orders' => MainOrder::where('archive','1')->get()]);
             }else{
-                return view('panel.office.index', ['orders' => Order::where('archive','0')->get()]);
+                return view('panel.office.index', ['main_orders' => MainOrder::where('archive','0')->get()]);
             } 
         }
+    }
 
-        
+    public function show($id)
+    {
+        return view('panel.office.show',['orders' => MainOrder::find($id)->orders]);
     }
 }

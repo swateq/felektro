@@ -11,6 +11,7 @@
         <a href="/" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Aktualne</a>
         <a href="/?archive" class="bg-transparent bg-blue-500 hover:bg-blue-600 hover:text-white font-semibold text-white hover:text-black py-2 px-4 border hover:border-blue-500 border-transparent rounded">Archiwalne</a>
     </div>
+
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
            <thead>
@@ -23,13 +24,27 @@
                </tr>
            </thead>
            <tbody>
-               @foreach ($orders as $order)
+               @foreach ($main_orders as $main_order)
                 <tr>
-                    <td>{{ $order->subiekt_number }}</td>
-                    <td>{{ $order->client }}</td>
-                    <td>{{ $order->status }}</td>
-                    <td>50 %</td>
-                    <td>Pokaż</td>
+                    <td>{{ $main_order->subiekt_number }}</td>
+                    <td>{{ $main_order->client }}</td>
+                    <td>{{ $main_order->status }}</td>
+                    <td>
+                        @if ( $main_order->percent_done < 40 )
+                            <div class="shadow w-full bg-grey-light mt-2">
+                                <div class="bg-red-700 text-xs leading-none py-1 text-center text-white" style="width: {{ $main_order->percent_done }}%">{{ $main_order->percent_done }}%</div>
+                            </div>
+                        @elseif( $main_order->percent_done < 75 )
+                            <div class="shadow w-full bg-grey-light mt-2">
+                                <div class="bg-yellow-700 text-xs leading-none py-1 text-center text-white" style="width: {{ $main_order->percent_done }}%">{{ $main_order->percent_done }}%</div>
+                            </div>
+                        @else
+                            <div class="shadow w-full bg-grey-light mt-2">
+                                <div class="bg-green-700 text-xs leading-none py-1 text-center text-white" style="width: {{ $main_order->percent_done }}%">{{ $main_order->percent_done }}%</div>
+                            </div>
+                        @endif
+                    </td>
+                    <td><a href="/main_order/{{ $main_order->id }}" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-4 border border-green-500 hover:border-transparent rounded">Pokaż</a></td>
                 </tr>
                @endforeach
            </tbody>
