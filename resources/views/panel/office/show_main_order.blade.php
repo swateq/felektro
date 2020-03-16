@@ -29,7 +29,7 @@
            <tbody>
                @foreach ($orders as $order)
                 <tr>
-                    <td>{{ $order->subiekt_number }}</td>
+                    <td><a href="/order/{{ $order->id }}">{{ $order->subiekt_number }}</a></td>
                     <td>{{ $order->symbol }}</td>
                     <td>{{ $order->product_id }}</td>
                     <td>{{ $order->quantity }}</td>

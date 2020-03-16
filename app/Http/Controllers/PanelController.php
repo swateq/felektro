@@ -25,8 +25,13 @@ class PanelController extends Controller
         }
     }
 
-    public function show($id)
+    public function showMainOrder($id)
     {
-        return view('panel.office.show',['orders' => MainOrder::find($id)->orders]);
+        return view('panel.office.show_main_order',['orders' => MainOrder::find($id)->orders]);
+    }
+
+    public function showOrder($id)
+    {
+        return view('panel.office.show_order',['order' => Order::find($id)->order_positions]);
     }
 }
