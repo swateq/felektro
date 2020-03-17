@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Order::class, function (Faker $faker) {
     return [
-        'main_order_id' => $faker->numberBetween($min = 0, $max = 10),
+        'main_order_id' => factory('App\MainOrder')->create()->id,
         'accepted_date' => $faker->date(),
         'subiekt_number' => 'ZK '.$faker->numberBetween($min = 0, $max = 100).'/2020',
         'symbol' => $faker->word(),
