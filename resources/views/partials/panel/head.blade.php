@@ -6,6 +6,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/layout.css') }}" rel="stylesheet">
 
     @stack('css')
 

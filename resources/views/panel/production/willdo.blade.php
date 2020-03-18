@@ -27,7 +27,7 @@ Zrobię {{ $order->subiekt_number }}
     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity" type="number" value="{{ $order->quantity }}" min="1" max="{{ $order->quantity }}">
     </div>
 
-    <button class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Zapisz</button>
+    <button class="btn-green">Zapisz</button>
 </div>
 
 

@@ -6,7 +6,7 @@
     @include('partials.panel.header')
 
     @yield('content')
-    
+
     @include('partials.panel.footer')
     @include('partials.panel.scripts')
 </body>

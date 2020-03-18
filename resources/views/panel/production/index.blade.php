@@ -8,8 +8,8 @@
 @section('content')
 <div class="container w-full mx-auto px-2">
     <div class="mb-8">
-        <a href="/" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Aktualne</a>
-        <a href="/?archive" class="bg-transparent bg-blue-500 hover:bg-blue-600 hover:text-white font-semibold text-white hover:text-black py-2 px-4 border hover:border-blue-500 border-transparent rounded">Archiwalne</a>
+        <a href="/" class="btn-blue">Aktualne</a>
+        <a href="/?archive" class="btn-green">Archiwalne</a>
     </div>
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -41,7 +41,7 @@
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
-                    <td><a href="/willdo/{{ $order->id }}" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Zrobię</a></td>
+                    <td><a href="/willdo/{{ $order->id }}" class="btn-green">Zrobię</a></td>
                 </tr>
                @endforeach
            </tbody>

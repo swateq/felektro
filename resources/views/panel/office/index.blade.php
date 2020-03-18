@@ -8,8 +8,8 @@
 @section('content')
 <div class="container w-full mx-auto px-2">
     <div class="mb-8">
-        <a href="/" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Aktualne</a>
-        <a href="/?archive" class="bg-transparent bg-blue-500 hover:bg-blue-600 hover:text-white font-semibold text-white hover:text-black py-2 px-4 border hover:border-blue-500 border-transparent rounded">Archiwalne</a>
+        <a href="/" class="btn-green">Aktualne</a>
+        <a href="/?archive" class="btn-blue">Archiwalne</a>
     </div>
 
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
@@ -44,7 +44,7 @@
                             </div>
                         @endif
                     </td>
-                    <td><a href="/main_order/{{ $main_order->id }}" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-4 border border-green-500 hover:border-transparent rounded">Pokaż</a></td>
+                    <td><a href="/main_order/{{ $main_order->id }}" class="btn-green">Pokaż</a></td>
                 </tr>
                @endforeach
            </tbody>
@@ -60,7 +60,7 @@
 
 <script>
     $(document).ready(function() {
-        
+
         var table = $('#example').DataTable( {
                     "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"

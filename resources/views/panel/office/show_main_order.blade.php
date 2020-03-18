@@ -13,7 +13,7 @@
             <h4>Klient: {{ $orders[0]->main_order->client }}</h4>
         </div>
         <div>
-            <a href="/" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Wstecz</a>
+            <a href="/" class="btn-yellow">Wstecz</a>
         </div>
     </div>
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
@@ -48,7 +48,7 @@
 
 <script>
     $(document).ready(function() {
-        
+
         var table = $('#example').DataTable( {
                     "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"

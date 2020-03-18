@@ -19339,15 +19339,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/layout.scss":
+/*!************************************!*\
+  !*** ./resources/sass/layout.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/layout.scss ./resources/css/app.css ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\felektro\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\felektro\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! c:\xampp\htdocs\felektro\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! c:\xampp\htdocs\felektro\resources\sass\layout.scss */"./resources/sass/layout.scss");
+module.exports = __webpack_require__(/*! c:\xampp\htdocs\felektro\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
