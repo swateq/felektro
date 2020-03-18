@@ -20,4 +20,5 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/main_order/{id}', 'PanelController@showMainOrder');
     Route::get('/order/{id}', 'PanelController@showOrder');
+    Route::get('/willdo/{id}', 'PanelController@willDo');
 });

@@ -41,7 +41,7 @@
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
-                    <td>Zrobię</td>
+                    <td><a href="/willdo/{{ $order->id }}" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Zrobię</a></td>
                 </tr>
                @endforeach
            </tbody>
@@ -57,7 +57,7 @@
 
 <script>
     $(document).ready(function() {
-        
+
         var table = $('#example').DataTable( {
                     "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"
