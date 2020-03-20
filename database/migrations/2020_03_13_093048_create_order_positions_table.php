@@ -17,7 +17,7 @@ class CreateOrderPositionsTable extends Migration
             $table->id();
             $table->integer('order_id')->default('1');
             $table->string('worker');
-            $table->integer('status');
+            $table->string('status')->default('w produkcji');
             $table->integer('quantity');
             $table->timestamps();
         });

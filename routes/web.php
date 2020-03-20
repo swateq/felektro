@@ -20,5 +20,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/main_order/{id}', 'MainOrderController@show');
     Route::get('/order/{id}', 'OrderController@show');
-    Route::get('/order_position/{id}', 'OrderPositionController@edit');
+    Route::get('/order_position/{id}', 'OrderPositionController@create');
+    Route::post('/order_position','OrderPositionController@store');
+    Route::get('/order_position/doing/{id}','OrderPositionController@show');
+    Route::post('/order_position/done/{id}','OrderPositionController@update');
 });

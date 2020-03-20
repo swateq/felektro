@@ -21,11 +21,11 @@
                    <th data-priority="4">Nazwa towaru</th>
                    <th data-priority="5">Kontrahent</th>
                    <th data-priority="6">Status</th>
-                   <th data-priority="6">Zamówiono</th>
-                   <th data-priority="6">W produkcji</th>
-                   <th data-priority="6">Wyprodukowano</th>
-                   <th data-priority="6">Zostało</th>
-                   <th data-priority="6">Akcja</th>
+                   <th data-priority="7">Zamówiono</th>
+                   <th data-priority="8">W produkcji</th>
+                   <th data-priority="9">Wyprodukowano</th>
+                   <th data-priority="10">Zostało</th>
+                   <th data-priority="11">Akcja</th>
                </tr>
            </thead>
            <tbody>
@@ -38,10 +38,13 @@
                     <td>{{ $order->client }}</td>
                     <td>{{ $order->status }}</td>
                     <td>{{ $order->quantity }}</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td><a href="/willdo/{{ $order->id }}" class="btn-green">Zrobię</a></td>
+                    <td>{{ $order->in_production_quantity }}</td>
+                    <td>{{ $order->done_quantity }}</td>
+                    <td>{{ $order->quantity - $order->done_quantity }}</td>
+                    <td>
+                        <a href="/order_position/{{ $order->id }}" class="btn-green">Zrobię</a>
+                        <a href="/order_position/doing/{{ $order->id }}" class="btn-blue">Kto robi</a>
+                    </td>
                 </tr>
                @endforeach
            </tbody>
@@ -59,6 +62,7 @@
     $(document).ready(function() {
 
         var table = $('#example').DataTable( {
+                    "responsive": true,
                     "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"
                 }
