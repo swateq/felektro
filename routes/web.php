@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', 'PanelController@index');
+    Route::get('/', 'MainOrderController@index');
 
-    Route::get('/main_order/{id}', 'PanelController@showMainOrder');
-    Route::get('/order/{id}', 'PanelController@showOrder');
-    Route::get('/willdo/{id}', 'PanelController@willDo');
+    Route::get('/main_order/{id}', 'MainOrderController@show');
+    Route::get('/order/{id}', 'OrderController@show');
+    Route::get('/order_position/{id}', 'OrderPositionController@edit');
 });

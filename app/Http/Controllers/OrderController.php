@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 
-class OrderPositionController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,7 +46,7 @@ class OrderPositionController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('panel.office.show_order',['order' => Order::findOrFail($id)->order_positions]);
     }
 
     /**
@@ -57,7 +57,7 @@ class OrderPositionController extends Controller
      */
     public function edit($id)
     {
-        return view('panel.production.order_position',['order' => Order::findOrFail($id)]);
+        //
     }
 
     /**
@@ -82,5 +82,4 @@ class OrderPositionController extends Controller
     {
         //
     }
-
 }

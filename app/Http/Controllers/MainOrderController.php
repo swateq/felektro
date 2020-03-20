@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MainOrder;
 use App\Order;
 
-class OrderPositionController extends Controller
+class MainOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,20 @@ class OrderPositionController extends Controller
      */
     public function index()
     {
-        //
+        if(\Gate::allows('isProduction'))
+        {
+            if(request()->has('archive')){
+                return view('panel.production.index', ['orders' => Order::where('archive','1')->get()]);
+            }else{
+                return view('panel.production.index', ['orders' => Order::where('archive','0')->get()]);
+            }
+        }elseif(\Gate::allows('isOffice')){
+            if(request()->has('archive')){
+                return view('panel.office.index', ['main_orders' => MainOrder::where('archive','1')->get()]);
+            }else{
+                return view('panel.office.index', ['main_orders' => MainOrder::where('archive','0')->get()]);
+            }
+        }
     }
 
     /**
@@ -46,7 +60,7 @@ class OrderPositionController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('panel.office.show_main_order',['orders' => MainOrder::findOrFail($id)->orders]);
     }
 
     /**
@@ -57,7 +71,7 @@ class OrderPositionController extends Controller
      */
     public function edit($id)
     {
-        return view('panel.production.order_position',['order' => Order::findOrFail($id)]);
+        //
     }
 
     /**
@@ -82,5 +96,4 @@ class OrderPositionController extends Controller
     {
         //
     }
-
 }

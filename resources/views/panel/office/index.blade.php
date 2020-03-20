@@ -62,7 +62,7 @@
     $(document).ready(function() {
 
         var table = $('#example').DataTable( {
-                    "language": {
+                "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"
                 }
             } )
