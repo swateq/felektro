@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('main_order_id')->default('1');
+            $table->integer('dok_id');
             $table->dateTime('accepted_date');
             $table->string('subiekt_number');
             $table->string('symbol');

@@ -25,3 +25,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/order_position/doing/{id}','OrderPositionController@show');
     Route::post('/order_position/done/{id}','OrderPositionController@update');
 });
+
+
+Route::get('/cron/orders','CronController@getZK');
