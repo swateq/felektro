@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    Zlecenia aktualne
+    Archiwum zleceń
 @endsection
 
 @section('content')

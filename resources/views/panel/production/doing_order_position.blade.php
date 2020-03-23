@@ -5,6 +5,11 @@
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 @endpush
 
+@section('title')
+    Kto robi zlecenie {{ $order->subiekt_number }}
+@endsection
+
+
 @section('content')
 <a href="/" class="btn-yellow">Wstecz</a>
 <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
@@ -18,14 +23,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($order_positions as $order_positions)
+            @foreach ($order_positions as $order_position)
              <tr>
-                <td>{{ $order_positions->worker }}</td>
-                <td>{{ $order_positions->quantity }}</td>
-                <td>{{ $order_positions->status }}</td>
+                <td>{{ ucfirst($order_position->worker) }}</td>
+                <td>{{ $order_position->quantity }}</td>
+                <td>{{ $order_position->status }}</td>
                 <td>
-                    @if ($order_positions->status != "zrobione")
-                        <form action="/order_position/done/{{ $order_positions->id }}" method="post">
+                    @if ($order_position->status != "zrobione")
+                        <form action="/order_position/done/{{ $order_position->id }}" method="post">
                             @csrf
                             <button type="submit" class="btn-green">Zrobione</button>
                         </form>

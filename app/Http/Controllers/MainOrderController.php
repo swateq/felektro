@@ -18,7 +18,7 @@ class MainOrderController extends Controller
         if(\Gate::allows('isProduction'))
         {
             if(request()->has('archive')){
-                return view('panel.production.index', ['orders' => Order::where('archive','1')->get()]);
+                return view('panel.production.index_archive', ['orders' => Order::where('archive','1')->get()]);
             }else{
                 return view('panel.production.index', ['orders' => Order::where('archive','0')->get()]);
             }

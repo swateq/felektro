@@ -13,7 +13,6 @@ $factory->define(Order::class, function (Faker $faker) {
         'symbol' => $faker->word(),
         'product_id' => $faker->randomDigit(),
         'client' => $faker->lastName(),
-        'status' => $faker->randomDigit(),
         'quantity' => $faker->numberBetween($min = 0, $max = 100),
         'archive' => $faker->numberBetween($min = 0, $max = 1)
     ];

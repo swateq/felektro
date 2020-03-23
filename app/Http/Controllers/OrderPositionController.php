@@ -53,7 +53,7 @@ class OrderPositionController extends Controller
      */
     public function show($id)
     {
-        return view('panel.production.doing_order_position',['order_positions' => Order::findOrFail($id)->order_positions]);
+        return view('panel.production.doing_order_position',['order_positions' => Order::findOrFail($id)->order_positions, 'order' => Order::findOrFail($id) ]);
     }
 
     /**
@@ -100,6 +100,7 @@ class OrderPositionController extends Controller
     {
         $order = Order::findOrFail($order_id);
         $order->in_production_quantity = $order->in_production_quantity + $quantity;
+        $order->status = 'w produkcji';
         $order->save();
     }
 
@@ -112,6 +113,7 @@ class OrderPositionController extends Controller
         if(($order->quantity - $order->done_quantity) == '0')
         {
             $order->archive = '1';
+            $order->status = "gotowe";
         }
         $order->save();
     }

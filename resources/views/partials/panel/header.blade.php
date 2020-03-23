@@ -13,6 +13,7 @@
                         <a class="no-underline hover:underline text-gray-300 text-sm p-3" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
                 @else
+                    <a href="/" class="no-underline hover:underline text-gray-300 text-sm p-3">Zamówienia</a>
                     <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
 
                     <a href="{{ route('logout') }}"

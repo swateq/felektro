@@ -1,8 +1,11 @@
 @extends('layouts.panel')
 
+@section('title')
+Zrobię {{ $order->subiekt_number }}
+@endsection
+
 @section('content')
 <div class="container w-full mx-auto px-2">
-Zrobię {{ $order->subiekt_number }}
 <form action="/order_position" method="post">
     @csrf
     <div class="flex flex-wrap mt-16">
@@ -27,7 +30,7 @@ Zrobię {{ $order->subiekt_number }}
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
             Ile
             </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity" name="quantity" type="number" value="{{ $order->quantity }}" min="1" max="{{ $order->quantity }}">
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity" name="quantity" type="number" value="{{ $order->quantity - $order->done_quantity - $order->in_production_quantity }}" min="1" max="{{ $order->quantity - $order->done_quantity - $order->in_production_quantity }}">
         </div>
 
         <button type="submit" class="btn-green">Zapisz</button>

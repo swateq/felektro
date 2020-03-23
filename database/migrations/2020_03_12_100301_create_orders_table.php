@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('symbol');
             $table->string('product_id');
             $table->string('client');
-            $table->integer('status');
+            $table->string('status')->default('nowe');
             $table->integer('quantity');
             $table->integer('in_production_quantity')->default(0);
             $table->integer('done_quantity')->default(0);
