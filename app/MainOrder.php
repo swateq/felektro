@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MainOrder extends Model
 {
-    
-
-
     /**
      * Relationships
      */

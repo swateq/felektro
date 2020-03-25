@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MainOrder;
-use App\Order;
+use GuzzleHttp\Client;
 
-class MainOrderController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +14,7 @@ class MainOrderController extends Controller
      */
     public function index()
     {
-        if(\Gate::allows('isProduction'))
-        {
-            if(request()->has('archive')){
-                return view('panel.production.index_archive', ['orders' => Order::where('archive','1')->get()]);
-            }else{
-                return view('panel.production.index', ['orders' => Order::where('archive','0')->get()]);
-            }
-        }elseif(\Gate::allows('isOffice')){
-            if(request()->has('archive')){
-                return view('panel.office.index', ['main_orders' => MainOrder::where('archive','1')->get()]);
-            }else{
-                return view('panel.office.index', ['main_orders' => MainOrder::where('archive','0')->get()]);
-            }
-        }
+        //
     }
 
     /**
@@ -60,7 +46,11 @@ class MainOrderController extends Controller
      */
     public function show($id)
     {
-        return view('panel.office.show_main_order',['orders' => Order::where('main_order_id','=',MainOrder::where('id' ,'=', $id )->pluck('dok_id'))->get()]);
+        $client = new Client();
+        $body = $client->get('localhost:8001/product/'.$id)->getBody();
+        $obj = json_decode($body);
+
+        return view('panel.global.product', ['product' => $obj]);
     }
 
     /**

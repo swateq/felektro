@@ -37,8 +37,8 @@
                 <tr>
                     <td>{{ $order->accepted_date }}</td>
                     <td>{{ $order->subiekt_number }}</td>
-                    <td>{{ $order->symbol }}</td>
-                    <td>{{ $order->product_id }}</td>
+                    <td><a href='/product/{{ $order->product_id }}'>{{  $order->symbol }}</a></td>
+                    <td>{{ $order->name }}</td>
                     <td>{{ $order->client }}</td>
                     <td>{{ $order->status }}</td>
                     <td>{{ $order->quantity }}</td>

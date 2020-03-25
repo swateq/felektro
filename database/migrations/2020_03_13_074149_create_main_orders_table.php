@@ -15,6 +15,7 @@ class CreateMainOrdersTable extends Migration
     {
         Schema::create('main_orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('dok_id');
             $table->string('subiekt_number');
             $table->string('client');
             $table->string('status');

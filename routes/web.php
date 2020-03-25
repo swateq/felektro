@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/order_position','OrderPositionController@store');
     Route::get('/order_position/doing/{id}','OrderPositionController@show');
     Route::post('/order_position/done/{id}','OrderPositionController@update');
+
+    Route::get('/product/{id}', 'ProductController@show');
 });
 
 

@@ -9,10 +9,6 @@
 <div class="container w-full mx-auto px-2">
     <div class="flex justify-between mb-8">
         <div>
-            <h4>Zamówienie: {{ $orders[0]->main_order->subiekt_number }}</h4>
-            <h4>Klient: {{ $orders[0]->main_order->client }}</h4>
-        </div>
-        <div>
             <a href="/" class="btn-yellow">Wstecz</a>
         </div>
     </div>
@@ -31,7 +27,7 @@
                 <tr>
                     <td><a href="/order/{{ $order->id }}">{{ $order->subiekt_number }}</a></td>
                     <td>{{ $order->symbol }}</td>
-                    <td>{{ $order->product_id }}</td>
+                    <td>{{ $order->name }}</td>
                     <td>{{ $order->quantity }}</td>
                 </tr>
                @endforeach

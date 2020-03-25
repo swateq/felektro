@@ -15,26 +15,31 @@
             <a href="/" class="btn-yellow">Wstecz</a>
         </div>
     </div>
+    @if (count($order) > 0)
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-       <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-           <thead>
-               <tr>
-                   <th data-priority="1">Pracownik</th>
-                   <th data-priority="2">Status</th>
-                   <th data-priority="3">Ilośc do wyprodukowania</th>
-               </tr>
-           </thead>
-           <tbody>
-               @foreach ($order as $orderPosition)
+        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+            <thead>
                 <tr>
-                    <td>{{ $orderPosition->worker }}</td>
-                    <td>{{ $orderPosition->status }}</td>
-                    <td>{{ $orderPosition->quantity }}</td>
+                    <th data-priority="1">Pracownik</th>
+                    <th data-priority="2">Status</th>
+                    <th data-priority="3">Ilośc do wyprodukowania</th>
                 </tr>
-               @endforeach
-           </tbody>
-       </table>
-   </div>
+            </thead>
+            <tbody>
+                @foreach ($order as $orderPosition)
+                 <tr>
+                     <td>{{ ucfirst($orderPosition->worker) }}</td>
+                     <td>{{ $orderPosition->status }}</td>
+                     <td>{{ $orderPosition->quantity }}</td>
+                 </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    @else
+        Nikt aktualnie nie realizuje tego zlecenia
+    @endif
+
 </div>
 @endsection
 
