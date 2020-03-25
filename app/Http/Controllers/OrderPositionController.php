@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\MainOrder;
 use App\Order;
 use App\OrderPosition;
+use App\Worker;
 
 class OrderPositionController extends Controller
 {
@@ -26,7 +27,7 @@ class OrderPositionController extends Controller
      */
     public function create($id)
     {
-        return view('panel.production.order_position',['order' => Order::findOrFail($id)]);
+        return view('panel.production.order_position',['order' => Order::findOrFail($id), 'workers' => Worker::all()]);
     }
 
     /**
