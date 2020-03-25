@@ -30,17 +30,17 @@
                     <td>{{ $main_order->client }}</td>
                     <td>{{ $main_order->status }}</td>
                     <td>
-                        @if ( $main_order->percent_done < 40 )
+                        @if ( round($main_order->done_quantity / $main_order->quantity *100) < 40 )
                             <div class="shadow w-full bg-grey-light mt-2">
-                                <div class="bg-red-700 text-xs leading-none py-1 text-center text-white" style="width: {{ $main_order->percent_done }}%">{{ $main_order->percent_done }}%</div>
+                                <div class="bg-red-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
                             </div>
-                        @elseif( $main_order->percent_done < 75 )
+                        @elseif( round($main_order->done_quantity / $main_order->quantity *100) < 75 )
                             <div class="shadow w-full bg-grey-light mt-2">
-                                <div class="bg-yellow-700 text-xs leading-none py-1 text-center text-white" style="width: {{ $main_order->percent_done }}%">{{ $main_order->percent_done }}%</div>
+                                <div class="bg-yellow-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
                             </div>
                         @else
                             <div class="shadow w-full bg-grey-light mt-2">
-                                <div class="bg-green-700 text-xs leading-none py-1 text-center text-white" style="width: {{ $main_order->percent_done }}%">{{ $main_order->percent_done }}%</div>
+                                <div class="bg-green-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
                             </div>
                         @endif
                     </td>

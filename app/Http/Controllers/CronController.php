@@ -22,7 +22,8 @@ class CronController extends Controller
                 $mainOrder->client = $i->kh_Symbol;
                 $mainOrder->subiekt_number = $i->dok_NrPelny;
                 $mainOrder->status = 'nowe';
-                $mainOrder->percent_done = '0';
+                $mainOrder->quantity = '0';
+                $mainOrder->done_quantity = '0';
                 $mainOrder->archive = '0';
                 $mainOrder->save();
             }
@@ -39,6 +40,11 @@ class CronController extends Controller
                 $order->client = $i->kh_Symbol;
                 $order->quantity = $i->ob_Ilosc;
                 $order->product_id = $i->tw_Id;
+
+
+                $mainOrder = MainOrder::where('dok_id', '=', $order->main_order_id)->first();
+                $mainOrder->quantity += $order->quantity;
+                $mainOrder->save();
                 $order->save();
             }
         }

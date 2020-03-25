@@ -19,7 +19,8 @@ class CreateMainOrdersTable extends Migration
             $table->string('subiekt_number');
             $table->string('client');
             $table->string('status');
-            $table->integer('percent_done')->default('0');
+            $table->integer('quantity');
+            $table->integer('done_quantity');
             $table->boolean('archive')->default(0);
             $table->timestamps();
         });

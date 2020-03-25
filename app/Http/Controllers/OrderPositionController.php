@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MainOrder;
 use App\Order;
 use App\OrderPosition;
 
@@ -115,6 +116,11 @@ class OrderPositionController extends Controller
             $order->archive = '1';
             $order->status = "gotowe";
         }
+        $mainOrder = MainOrder::where('dok_id', '=', $order->main_order_id)->first();
+        $mainOrder->done_quantity += $quantity;
+
+        $mainOrder->save();
         $order->save();
+
     }
 }
