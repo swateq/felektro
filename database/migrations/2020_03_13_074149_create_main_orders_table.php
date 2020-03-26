@@ -22,6 +22,7 @@ class CreateMainOrdersTable extends Migration
             $table->integer('quantity');
             $table->integer('done_quantity');
             $table->boolean('archive')->default(0);
+            $table->boolean('accepted')->default(0);
             $table->timestamps();
         });
     }

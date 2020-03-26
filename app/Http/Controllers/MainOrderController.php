@@ -18,9 +18,9 @@ class MainOrderController extends Controller
         if(\Gate::allows('isProduction'))
         {
             if(request()->has('archive')){
-                return view('panel.production.index_archive', ['orders' => Order::where('archive','1')->get()]);
+                return view('panel.production.index_archive', ['orders' => Order::where([['archive','=','1'],['accepted','=','1']])->get()]);
             }else{
-                return view('panel.production.index', ['orders' => Order::where('archive','0')->get()]);
+                return view('panel.production.index', ['orders' => Order::where([['archive','=','0'],['accepted','=','1']])->get()]);
             }
         }elseif(\Gate::allows('isOffice')){
             if(request()->has('archive')){
@@ -60,7 +60,7 @@ class MainOrderController extends Controller
      */
     public function show($id)
     {
-        return view('panel.office.show_main_order',['orders' => Order::where('main_order_id','=',MainOrder::where('id' ,'=', $id )->pluck('dok_id'))->get()]);
+        return view('panel.office.show_main_order',['orders' => Order::where('main_order_id','=',MainOrder::where('id' ,'=', $id )->pluck('dok_id'))->get(), 'mainOrder' => MainOrder::where('id' ,'=', $id )->first()]);
     }
 
     /**
@@ -95,5 +95,21 @@ class MainOrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function accept($id)
+    {
+        $mainOrder = MainOrder::where('id','=',$id)->first();
+        $mainOrder->accepted = 1;
+        $mainOrder->save();
+
+        $orders = Order::where('main_order_id','=',$mainOrder->dok_id)->get();
+        foreach($orders as $order)
+        {
+            $order->accepted = 1;
+            $order->save();
+        }
+
+        return redirect()->back();
     }
 }

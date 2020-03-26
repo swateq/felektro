@@ -5,6 +5,15 @@
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 @endpush
 
+@section('title')
+Zlecenie {{ $mainOrder->subiekt_number }} dla klienta {{ $mainOrder->client }}
+@if ($mainOrder->accepted == 0)
+niezaakceptowane.
+@else
+zaakceptowane.
+@endif
+@endsection
+
 @section('content')
 <div class="container w-full mx-auto px-2">
     <div class="flex justify-between mb-8">
@@ -12,7 +21,7 @@
             <a href="/" class="btn-yellow">Wstecz</a>
         </div>
     </div>
-    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+    <div id='recipients' class="p-8 mt-6 mb-12 lg:mt-0 rounded shadow bg-white">
        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
            <thead>
                <tr>
@@ -36,6 +45,9 @@
            </tbody>
        </table>
    </div>
+   @if ($mainOrder->accepted == 0)
+        <a href="/main_order/{{ $mainOrder->id }}/accept" class="btn-green">Zaakceptuj</a>
+   @endif
 </div>
 @endsection
 

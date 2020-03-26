@@ -19,8 +19,9 @@
                    <th data-priority="1">Numer</th>
                    <th data-priority="2">Kontrahent</th>
                    <th data-priority="3">Status</th>
-                   <th data-priority="4">% zrealizowania</th>
-                   <th data-priority="5">Akcja</th>
+                   <th data-priority="4">Zaakceptowane</th>
+                   <th data-priority="5">% zrealizowania</th>
+                   <th data-priority="6">Akcja</th>
                </tr>
            </thead>
            <tbody>
@@ -29,6 +30,13 @@
                     <td>{{ $main_order->subiekt_number }}</td>
                     <td>{{ $main_order->client }}</td>
                     <td>{{ $main_order->status }}</td>
+                    <td>
+                        @if($main_order->accepted == 0)
+                        Nie
+                        @else
+                        Tak
+                        @endif
+                    </td>
                     <td>
                         @if ( round($main_order->done_quantity / $main_order->quantity *100) < 40 )
                             <div class="shadow w-full bg-grey-light mt-2">

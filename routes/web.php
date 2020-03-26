@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/', 'MainOrderController@index');
 
     Route::get('/main_order/{id}', 'MainOrderController@show');
+    Route::get('/main_order/{id}/accept', 'MainOrderController@accept');
     Route::get('/order/{id}', 'OrderController@show');
     Route::get('/order_position/{id}', 'OrderPositionController@create');
     Route::post('/order_position','OrderPositionController@store');
