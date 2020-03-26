@@ -86,4 +86,14 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    public function showKomplet($id)
+    {
+        $client = new Client();
+        $body = $client->get('localhost:8001/komplet/'.$id)->getBody();
+        $obj = json_decode($body);
+
+        return view('panel.global.komplet', ['komplet' => $obj]);
+    }
 }

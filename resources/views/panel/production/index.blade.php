@@ -37,7 +37,15 @@
                 <tr>
                     <td>{{ $order->accepted_date }}</td>
                     <td>{{ $order->subiekt_number }}</td>
-                    <td><a href='/product/{{ $order->product_id }}'>{{  $order->symbol }}</a></td>
+                    <td>
+                        @if ( $order->product_type == 8 )
+                            <div class="flex">
+                                <img class="mr-2" src="/img/box.png" width="20px" height="20px"><a href='/komplet/{{ $order->product_id }}'> {{  $order->symbol }}</a>
+                            </div>
+                        @else
+                            <a href='/product/{{ $order->product_id }}'>{{  $order->symbol }}</a>
+                        @endif
+                    </td>
                     <td>{{ $order->name }}</td>
                     <td>{{ $order->client }}</td>
                     <td>{{ $order->status }}</td>
