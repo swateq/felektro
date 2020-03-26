@@ -19,7 +19,8 @@
                    <th data-priority="1">Numer zlecenia</th>
                    <th data-priority="2">Symbol</th>
                    <th data-priority="3">Nazwa towaru</th>
-                   <th data-priority="4">Ilośc do wyprodukowania</th>
+                   <th data-priority="4">Status</th>
+                   <th data-priority="5">Ilośc do wyprodukowania</th>
                </tr>
            </thead>
            <tbody>
@@ -28,6 +29,7 @@
                     <td><a href="/order/{{ $order->id }}">{{ $order->subiekt_number }}</a></td>
                     <td>{{ $order->symbol }}</td>
                     <td>{{ $order->name }}</td>
+                    <td>{{ $order->status }}</td>
                     <td>{{ $order->quantity }}</td>
                 </tr>
                @endforeach

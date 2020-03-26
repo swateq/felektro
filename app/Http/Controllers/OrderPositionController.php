@@ -103,6 +103,11 @@ class OrderPositionController extends Controller
         $order = Order::findOrFail($order_id);
         $order->in_production_quantity = $order->in_production_quantity + $quantity;
         $order->status = 'w produkcji';
+
+        $mainOrder = MainOrder::where('dok_id', '=', $order->main_order_id)->first();
+        $mainOrder->status = 'w produkcji';
+
+        $mainOrder->save();
         $order->save();
     }
 
@@ -112,13 +117,19 @@ class OrderPositionController extends Controller
         $order->done_quantity = $order->done_quantity + $quantity;
         $order->in_production_quantity = $order->in_production_quantity - $quantity;
 
-        if(($order->quantity - $order->done_quantity) == '0')
+        if(($order->quantity - $order->done_quantity) == 0)
         {
             $order->archive = '1';
             $order->status = "gotowe";
         }
         $mainOrder = MainOrder::where('dok_id', '=', $order->main_order_id)->first();
         $mainOrder->done_quantity += $quantity;
+
+        if($mainOrder->quantity - $mainOrder->doneQuantity - $quantity == '0')
+        {
+            $mainOrder->archive = '1';
+            $mainOrder->status = 'gotowe';
+        }
 
         $mainOrder->save();
         $order->save();

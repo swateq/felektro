@@ -7,13 +7,9 @@
 
 @section('content')
 <div class="container w-full mx-auto px-2">
-    <div class="flex justify-between mb-8">
-        <div>
-
-        </div>
-        <div>
-            <a href="/" class="btn-yellow">Wstecz</a>
-        </div>
+    <div class="mb-8">
+        <a href="{{ url()->previous() }}" class="btn-yellow">Wstecz</a>
+    </div>
     </div>
     @if (count($order) > 0)
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
