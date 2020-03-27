@@ -53,8 +53,10 @@
                     <td>{{ $order->in_production_quantity }}</td>
                     <td>{{ $order->done_quantity }}</td>
                     <td>{{ $order->quantity - $order->done_quantity }}</td>
-                    <td>
+                    <td class="flex">
+                        @if ($order->quantity - $order->in_production_quantity - $order->done_quantity > 0)
                         <a href="/order_position/{{ $order->id }}" class="btn-green">Zrobię</a>
+                        @endif
                         <a href="/order_position/doing/{{ $order->id }}" class="btn-blue">Kto robi</a>
                     </td>
                 </tr>

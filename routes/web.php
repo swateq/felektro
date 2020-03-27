@@ -28,7 +28,13 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/product/{id}', 'ProductController@show');
     Route::get('/komplet/{id}', 'ProductController@showKomplet');
-});
 
+});
+Route::group(['middleware' => ['can:isAdmin']], function () {
+    Route::get('/admin/workers', 'WorkerController@index');
+    Route::get('/admin/workers/create', 'WorkerController@create');
+    Route::post('/admin/workers', 'WorkerController@store');
+    Route::get('/admin/workers/delete/{id}', 'WorkerController@destroy');
+});
 
 Route::get('/cron/orders','CronController@getZK');

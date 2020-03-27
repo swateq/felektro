@@ -7,11 +7,11 @@
                 </a>
             </div>
             <div class="flex-1 text-right">
+                @can('isAdmin')
+                <a href="/admin/workers" class="no-underline hover:underline text-gray-300 text-sm p-3">Pracownicy</a>
+                @endcan
                 @guest
                     <a class="no-underline hover:underline text-gray-300 text-sm p-3" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    @if (Route::has('register'))
-                        <a class="no-underline hover:underline text-gray-300 text-sm p-3" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif
                 @else
                     <a href="/" class="no-underline hover:underline text-gray-300 text-sm p-3">Zamówienia</a>
                     <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>

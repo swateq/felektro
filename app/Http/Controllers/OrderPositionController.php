@@ -125,7 +125,7 @@ class OrderPositionController extends Controller
         $mainOrder = MainOrder::where('dok_id', '=', $order->main_order_id)->first();
         $mainOrder->done_quantity += $quantity;
 
-        if($mainOrder->quantity - $mainOrder->doneQuantity - $quantity == '0')
+        if($mainOrder->quantity - $mainOrder->doneQuantity - $quantity == 0)
         {
             $mainOrder->archive = '1';
             $mainOrder->status = 'gotowe';
