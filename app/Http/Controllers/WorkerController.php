@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Worker;
 
 class WorkerController extends Controller
@@ -36,7 +37,9 @@ class WorkerController extends Controller
     public function store(Request $request)
     {
         Worker::create($request->all());
-        return redirect('/');
+        toast('Nowy pracownik dodany pomyślnie!','success')->autoClose(5000)->position('top-end')->timerProgressBar();
+
+        return redirect('/admin/workers');
     }
 
     /**
@@ -83,6 +86,7 @@ class WorkerController extends Controller
     {
         $worker = Worker::findOrFail($id);
         $worker->delete();
+        toast('Pracownik usunięty pomyślnie!','success')->autoClose(5000)->position('top-end')->timerProgressBar();
         return redirect('/admin/workers');
     }
 }

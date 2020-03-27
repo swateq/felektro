@@ -13,5 +13,6 @@
 
     @include('partials.panel.footer')
     @include('partials.panel.scripts')
+    @include('sweetalert::alert')
 </body>
 </html>
