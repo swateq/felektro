@@ -33,7 +33,6 @@ class CronController extends Controller
                 $order = new Order();
                 $order->subiekt_number = $i->dok_NrPelny;
                 $order->main_order_id = $i->dok_Id;
-                $order->accepted_date = now();
                 $order->product_type = $i->tw_Rodzaj;
                 $order->dok_id = $i->ob_Id;
                 $order->symbol = $i->tw_Symbol;

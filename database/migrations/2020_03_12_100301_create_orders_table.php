@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('main_order_id');
             $table->integer('dok_id');
-            $table->dateTime('accepted_date');
+            $table->dateTime('accepted_date')->nullable();
             $table->string('subiekt_number');
             $table->string('symbol');
             $table->string('name');

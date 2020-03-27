@@ -106,6 +106,7 @@ class MainOrderController extends Controller
         $orders = Order::where('main_order_id','=',$mainOrder->dok_id)->get();
         foreach($orders as $order)
         {
+            $order->accepted_date = now();
             $order->accepted = 1;
             $order->save();
         }
