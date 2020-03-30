@@ -66,6 +66,7 @@ Zrealizuj pomimo niewyprodukowania całości
        </table>
    </div>
    <a href="#" class="btn-blue">Zrealizuj</a>
+   <a href="#" class="btn-blue">Eksportuj do csv</a>
 </div>
 @endsection
 
