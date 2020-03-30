@@ -48,6 +48,9 @@ zaakceptowane.
    @if ($mainOrder->accepted == 0)
         <a href="/main_order/{{ $mainOrder->id }}/accept" class="btn-green">Zaakceptuj</a>
    @endif
+   @if ($mainOrder->status == "w produkcji")
+        <a href="/main_order/{{ $mainOrder->id }}/redeem" class="btn-blue">Zrealizuj pomimo niewyprodukowania całości</a>
+   @endif
 </div>
 @endsection
 

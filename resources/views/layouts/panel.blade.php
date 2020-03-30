@@ -5,7 +5,7 @@
 <body class="bg-gray-100 h-screen antialiased leading-none">
     @include('partials.panel.header')
 
-    <h3 class="text-center text-3xl">
+    <h3 class="text-center text-3xl mb-8">
         @yield('title')
     </h3>
 

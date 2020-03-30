@@ -7,6 +7,7 @@
                 </a>
             </div>
             <div class="flex-1 text-right">
+                <a href="/product/search" class="no-underline hover:underline text-gray-300 text-sm p-3">Produkt</a>
                 @can('isAdmin')
                 <a href="/admin/workers" class="no-underline hover:underline text-gray-300 text-sm p-3">Pracownicy</a>
                 @endcan

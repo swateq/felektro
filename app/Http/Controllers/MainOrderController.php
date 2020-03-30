@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\MainOrder;
 use App\Order;
+use App\OrderPosition;
 
 class MainOrderController extends Controller
 {
@@ -112,5 +113,20 @@ class MainOrderController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function redeem($id)
+    {
+        $mainOrder = MainOrder::where('id','=',$id)->first();
+        $ordersNew = Order::where('main_order_id','=',$mainOrder->dok_id)->where('status','nowe')->get();
+        $ordersInProduction = Order::where('main_order_id','=',$mainOrder->dok_id)->where('status','w produkcji')->get();
+
+        foreach ($ordersInProduction as $order) {
+            $order->quantity_left = $order->quantity - $order->in_production_quantity - $order->done_quantity;
+        }
+
+        return view('panel.office.redeem',['mainOrder' => $mainOrder,
+                                            'ordersNew' => $ordersNew,
+                                            'ordersInProduction' => $ordersInProduction]);
     }
 }

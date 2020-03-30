@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+         return view('panel.global.product.index');
     }
 
     /**
@@ -50,7 +50,7 @@ class ProductController extends Controller
         $body = $client->get('localhost:8001/product/'.$id)->getBody();
         $obj = json_decode($body);
 
-        return view('panel.global.product', ['product' => $obj]);
+        return view('panel.global.product.show', ['product' => $obj]);
     }
 
     /**
@@ -86,7 +86,6 @@ class ProductController extends Controller
     {
         //
     }
-
 
     public function showKomplet($id)
     {
