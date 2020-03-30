@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\MainOrder;
 use App\Order;
-use App\OrderPosition;
+use App\Exports\RedeemExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MainOrderController extends Controller
 {
@@ -128,5 +129,11 @@ class MainOrderController extends Controller
         return view('panel.office.redeem',['mainOrder' => $mainOrder,
                                             'ordersNew' => $ordersNew,
                                             'ordersInProduction' => $ordersInProduction]);
+    }
+
+    public function redeemExport($id)
+    {
+        return Excel::download(new RedeemExport($id), 'redeem.xlsx');
+
     }
 }

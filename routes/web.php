@@ -38,6 +38,11 @@ Route::group(['middleware' => ['auth']], function () {
      */
     Route::get('/komplet/{id}', 'ProductController@showKomplet');
 
+    /**
+     * /export
+     */
+    Route::get('/redeem/export/{id}', 'MainOrderController@redeemExport');
+
 });
 Route::group(['middleware' => ['can:isAdmin']], function () {
     /**
