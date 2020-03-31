@@ -36,7 +36,7 @@
                @foreach ($orders as $order)
                 <tr>
                     <td>{{ $order->accepted_date }}</td>
-                    <td>{{ $order->subiekt_number }}</td>
+                    <td>{{ $order->id.'.'.$order->subiekt_number }}</td>
                     <td>
                         @if ( $order->product_type == 8 )
                             <div class="flex">

@@ -17,6 +17,7 @@ class CronController extends Controller
 
         foreach($obj as $i){
             if(MainOrder::where('dok_id',$i->dok_Id)->first() === null){
+                $int = 1;
                 $mainOrder = new MainOrder();
                 $mainOrder->dok_id = $i->dok_Id;
                 $mainOrder->client = $i->kh_Symbol;
@@ -31,7 +32,8 @@ class CronController extends Controller
             if(Order::where('dok_id',$i->ob_Id)->first() === null){
                 echo "Dodaję: ". $i->ob_Id;
                 $order = new Order();
-                $order->subiekt_number = $i->dok_NrPelny;
+                $subiekt_number = explode(" ",$i->dok_NrPelny);
+                $order->subiekt_number = $subiekt_number[0].' '.$int.'/'.$subiekt_number[1];
                 $order->main_order_id = $i->dok_Id;
                 $order->product_type = $i->tw_Rodzaj;
                 $order->dok_id = $i->ob_Id;
@@ -46,6 +48,7 @@ class CronController extends Controller
                 $mainOrder->quantity += $order->quantity;
                 $mainOrder->save();
                 $order->save();
+                $int++;
             }
         }
     }
