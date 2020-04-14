@@ -11,7 +11,7 @@
             </label>
             <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name='search' id="search" type="text" placeholder="Name">
           </div>
-          <button type="submit" class="btn-blue">Szukaj</button>
+          <a href="" onclick="this.href='/product?search='+document.getElementById('search').value" class="btn-blue">Szukaj</a>
       </form>
 </div>
 @endsection

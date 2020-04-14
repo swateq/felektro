@@ -6,14 +6,12 @@
 @endpush
 
 @section('title')
-    Informacje o komplecie
+    Wyniki wyszukiwania
 @endsection
 
 @section('content')
 <div class="container w-full mx-auto px-2">
     <div class="mb-8">
-        <h3>Symbol: {{ $product[0]->tw_Symbol }}</h3><br/>
-        Nazwa: {{ $product[0]->tw_Nazwa }}
     </div>
 
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
@@ -22,23 +20,13 @@
                <tr>
                    <th data-priority="1">Symbol</th>
                    <th data-priority="2">Nazwa</th>
-                   <th data-priority="3">Ilość</th>
-                   <th data-priority="4">Jednostka miary</th>
                </tr>
            </thead>
            <tbody>
-               @foreach ($komplet as $product)
+               @foreach ($result as $product)
                 <tr>
                     <td><a href="/product/{{ $product->tw_Id }}">{{ $product->tw_Symbol }}</a></td>
                     <td>{{ $product->tw_Nazwa }}</td>
-                    <td>
-                        @if ($product->kpl_Liczba >= 1)
-                            {{ round($product->kpl_Liczba) }}
-                        @else
-                            {{ $product->kpl_Liczba }}
-                        @endif
-                    </td>
-                    <td>{{ $product->tw_JednMiary }}</td>
                 </tr>
                @endforeach
            </tbody>

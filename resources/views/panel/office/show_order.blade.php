@@ -11,7 +11,7 @@
         <a href="{{ url()->previous() }}" class="btn-yellow">Wstecz</a>
     </div>
     </div>
-    @if (count($order) > 0)
+    @if (count($orderPositions) > 0)
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
             <thead>
@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($order as $orderPosition)
+                @foreach ($orderPositions as $orderPosition)
                  <tr>
                      <td>{{ ucfirst($orderPosition->worker) }}</td>
                      <td>{{ $orderPosition->status }}</td>
@@ -35,7 +35,7 @@
     @else
         Nikt aktualnie nie realizuje tego zlecenia
     @endif
-
+        <a href="http://127.0.0.1:8001/addpw/{{ $order->product_id }}/{{ $order->quantity }}" class="btn-green">Wywołaj PW</a>
 </div>
 @endsection
 

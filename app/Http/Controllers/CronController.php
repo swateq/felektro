@@ -20,10 +20,11 @@ class CronController extends Controller
                 $int = 1;
                 $mainOrder = new MainOrder();
                 $mainOrder->dok_id = $i->dok_Id;
+                $mainOrder->date = $i->dok_DataWyst;
                 $mainOrder->client = $i->kh_Symbol;
                 $mainOrder->subiekt_number = $i->dok_NrPelny;
                 $mainOrder->status = 'nowe';
-                $mainOrder->quantity = '0';
+                $mainOrder->quantity = 0;
                 $mainOrder->done_quantity = '0';
                 $mainOrder->archive = '0';
                 $mainOrder->save();

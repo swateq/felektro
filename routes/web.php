@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
      */
     Route::get('/product/search', 'ProductController@index');
     Route::get('/product/{id}', 'ProductController@show');
+    Route::get('/product', 'ProductController@search');
 
     /**
      * /komplet

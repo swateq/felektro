@@ -6,7 +6,8 @@
 @endpush
 
 @section('title')
-Zlecenie {{ $mainOrder->subiekt_number }} dla klienta {{ $mainOrder->client }}
+Zlecenie {{ $mainOrder->subiekt_number }}
+dla klienta {{ $mainOrder->client }} z {{ $mainOrder->date }}
 @if ($mainOrder->accepted == 0)
 niezaakceptowane.
 @else
@@ -36,8 +37,21 @@ zaakceptowane.
                @foreach ($orders as $order)
                 <tr>
                     <td><a href="/order/{{ $order->id }}">{{ $order->subiekt_number }}</a></td>
-                    <td>{{ $order->symbol }}</td>
-                    <td>{{ $order->name }}</td>
+                    @if($order->product_type == 8)
+                    <td>
+                        <a href="/komplet/{{ $order->product_id }}"> {{ $order->symbol   }}</a>
+                    </td>
+                    <td>
+                        <a href="/komplet/{{ $order->product_id }}">{{ $order->name }}</a>
+                    </td>
+                    @else
+                    <td>
+                        <a href="/product/{{ $order->product_id }}"> {{ $order->symbol   }}</a>
+                    </td>
+                    <td>
+                        <a href="/product/{{ $order->product_id }}">{{ $order->name }}</a>
+                    </td>
+                    @endif
                     <td>{{ $order->status }}</td>
                     <td>{{ $order->quantity }}</td>
                 </tr>

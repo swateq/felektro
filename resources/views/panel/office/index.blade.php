@@ -38,21 +38,26 @@
                         @endif
                     </td>
                     <td>
-                        @if ( round($main_order->done_quantity / $main_order->quantity *100) < 40 )
-                            <div class="shadow w-full bg-grey-light mt-2">
-                                <div class="bg-red-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
-                            </div>
-                        @elseif( round($main_order->done_quantity / $main_order->quantity *100) < 75 )
-                            <div class="shadow w-full bg-grey-light mt-2">
-                                <div class="bg-yellow-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
-                            </div>
-                        @else
-                            <div class="shadow w-full bg-grey-light mt-2">
-                                <div class="bg-green-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
-                            </div>
+                        @if($main_order->done_quantity != 0)
+                            @if ( round($main_order->done_quantity / $main_order->quantity *100) < 40 )
+                                <div class="shadow w-full bg-grey-light mt-2">
+                                    <div class="bg-red-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
+                                </div>
+                            @elseif( round($main_order->done_quantity / $main_order->quantity *100) < 75 )
+                                <div class="shadow w-full bg-grey-light mt-2">
+                                    <div class="bg-yellow-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
+                                </div>
+                            @else
+                                <div class="shadow w-full bg-grey-light mt-2">
+                                    <div class="bg-green-700 text-xs leading-none py-1 text-center text-white" style="width: {{ round($main_order->done_quantity / $main_order->quantity *100) }}%">{{ round($main_order->done_quantity / $main_order->quantity *100) }}%</div>
+                                </div>
+                            @endif
                         @endif
+
                     </td>
-                    <td><a href="/main_order/{{ $main_order->id }}" class="btn-green">Pokaż</a></td>
+                    <td>
+                        <a href="/main_order/{{ $main_order->id }}" class="btn-green">Pokaż</a>
+                    </td>
                 </tr>
                @endforeach
            </tbody>
