@@ -5,6 +5,10 @@
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 @endpush
 
+@push('head_start')
+<meta http-equiv="refresh" content="3000;http://127.0.0.1:8000" />
+@endpush
+
 @section('title')
     Zlecenia aktualne
 @endsection
@@ -12,8 +16,8 @@
 @section('content')
 <div class="w-full mx-auto px-2">
     <div class="mb-8">
-        <a href="/" class="btn-blue">Aktualne</a>
-        <a href="/?archive" class="btn-green">Archiwalne</a>
+        <a href="/orders" class="btn-blue">Aktualne</a>
+        <a href="/orders?archive" class="btn-green">Archiwalne</a>
     </div>
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -57,7 +61,9 @@
                         @if ($order->quantity - $order->in_production_quantity - $order->done_quantity > 0)
                             <a href="/order_position/{{ $order->id }}" class="btn-green">Zrobię</a>
                         @endif
+                        @if ($order->in_production_quantity != 0)
                             <a href="/order_position/doing/{{ $order->id }}" class="btn-blue">Kto robi</a>
+                        @endif
                     </td>
                 </tr>
                @endforeach

@@ -18,6 +18,8 @@ Route::group(['middleware' => ['auth']], function () {
      * /order
      */
     Route::get('/order/{id}', 'OrderController@show');
+    Route::get('/orders', 'OrderController@index');
+    Route::get('/orders/familliar/{id}', 'OrderController@findFamilliar');
 
     /**
      * /order_position

@@ -5,6 +5,10 @@
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 @endpush
 
+@push('head_start')
+<meta http-equiv="refresh" content="3000;http://127.0.0.1:8000" />
+@endpush
+
 @section('title')
     Archiwum zleceń
 @endsection

@@ -19,11 +19,7 @@ class MainOrderController extends Controller
     {
         if(\Gate::allows('isProduction'))
         {
-            if(request()->has('archive')){
-                return view('panel.production.index_archive', ['orders' => Order::where([['archive','=','1'],['accepted','=','1']])->get()]);
-            }else{
-                return view('panel.production.index', ['orders' => Order::where([['archive','=','0'],['accepted','=','1']])->get()]);
-            }
+            return view('panel.production.start');
         }elseif(\Gate::allows('isOffice') || \Gate::allows('isAdmin')){
             if(request()->has('archive')){
                 return view('panel.office.index', ['main_orders' => MainOrder::where('archive','1')->get()]);

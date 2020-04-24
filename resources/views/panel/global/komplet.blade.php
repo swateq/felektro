@@ -12,8 +12,19 @@
 @section('content')
 <div class="container w-full mx-auto px-2">
     <div class="mb-8">
-        <h3>Symbol: {{ $product[0]->tw_Symbol }}</h3><br/>
-        Nazwa: {{ $product[0]->tw_Nazwa }}
+        Symbol: {{ $product[0]->tw_Symbol }}<br/>
+        Nazwa: {{ $product[0]->tw_Nazwa }}<br/>
+        <div class="flex my-2">
+            <a target="_blank" href="https://f-elektro.com/!data/attachments/{{ $product[0]->tw_Symbol }}_technical1.pdf">
+                Rysunek techniczny<img src="/img/pdf.png" alt="">
+            </a>
+            <a class="ml-4" target="_blank" href="https://f-elektro.com/!data/attachments/{{ $product[0]->tw_Symbol }}_card1.pdf">
+                Karta katalogowa<img src="/img/pdf.png" alt="">
+            </a>
+            <a target="_blank" href="https://f-elektro.com/!data/products/b_{{ $product[0]->tw_Symbol }}_photo1.jpg">
+                <img src="https://f-elektro.com/!data/products/s_{{ $product[0]->tw_Symbol }}_photo1.jpg" alt="">
+            </a>
+        </div>
     </div>
 
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">

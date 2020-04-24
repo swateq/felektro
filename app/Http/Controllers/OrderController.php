@@ -15,7 +15,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        if(\Gate::allows('isOffice') || \Gate::allows('isAdmin')){
+        if(\Gate::allows('isProduction'))
+        {
+            if(request()->has('archive')){
+                return view('panel.production.index_archive', ['orders' => Order::where([['archive','=','1'],['accepted','=','1']])->get()]);
+            }else{
+                return view('panel.production.index', ['orders' => Order::where([['archive','=','0'],['accepted','=','1']])->get()]);
+            }
+        }elseif(\Gate::allows('isOffice') || \Gate::allows('isAdmin')){
             return view('panel.office.index_order', ['orders' => Order::all()]);
         }
     }
@@ -84,5 +91,11 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function findFamilliar($prod_id)
+    {
+        return Order::where('product_id', $prod_id)
+            ->where('status', 'nowe')->get();
     }
 }

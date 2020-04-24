@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-Zlecenie {{ $mainOrder->subiekt_number }}
+Zamówienie {{ $mainOrder->subiekt_number }}
 dla klienta {{ $mainOrder->client }} z {{ $mainOrder->date }}
 @if ($mainOrder->accepted == 0)
 niezaakceptowane.
