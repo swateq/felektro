@@ -19,11 +19,13 @@ class CreateMainOrdersTable extends Migration
             $table->integer('dok_id');
             $table->string('subiekt_number');
             $table->string('client');
+            $table->string('client_type');
             $table->string('status');
             $table->integer('quantity');
             $table->integer('done_quantity');
             $table->boolean('archive')->default(0);
             $table->boolean('accepted')->default(0);
+            $table->datetime('accepted_date')->nullable();
             $table->timestamps();
         });
     }

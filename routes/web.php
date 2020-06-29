@@ -13,12 +13,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/main_order/{id}', 'MainOrderController@show');
     Route::get('/main_order/{id}/accept', 'MainOrderController@accept');
     Route::get('/main_order/{id}/redeem', 'MainOrderController@redeem');
+    Route::post('/main_order/{id}/accepted_date', 'MainOrderController@update');
 
     /**
      * /order
      */
     Route::get('/order/{id}', 'OrderController@show');
     Route::get('/orders', 'OrderController@index');
+    Route::get('/orders/export', 'OrderController@indexExport');
     Route::get('/orders/familliar/{id}', 'OrderController@findFamilliar');
 
     /**
@@ -61,4 +63,4 @@ Route::group(['middleware' => ['can:isAdmin']], function () {
 /**
  * /cron
  */
-Route::get('/cron/orders','CronController@getZK');
+Route::get('/cron/orders','CronController@getZKnormal');

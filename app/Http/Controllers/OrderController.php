@@ -18,12 +18,24 @@ class OrderController extends Controller
         if(\Gate::allows('isProduction'))
         {
             if(request()->has('archive')){
-                return view('panel.production.index_archive', ['orders' => Order::where([['archive','=','1'],['accepted','=','1']])->get()]);
+                return view('panel.production.index_archive', ['orders' => Order::where([['archive','=','1'],['accepted','=','1'],['client_type','!=','export']])->get()]);
             }else{
-                return view('panel.production.index', ['orders' => Order::where([['archive','=','0'],['accepted','=','1']])->get()]);
+                return view('panel.production.index', ['orders' => Order::where([['archive','=','0'],['accepted','=','1'],['client_type','!=','export']])->get()]);
             }
         }elseif(\Gate::allows('isOffice') || \Gate::allows('isAdmin')){
             return view('panel.office.index_order', ['orders' => Order::all()]);
+        }
+    }
+
+    public function indexExport()
+    {
+        if(\Gate::allows('isProduction'))
+        {
+            if(request()->has('archive')){
+                return view('panel.production.index_archive', ['orders' => Order::where([['archive','=','1'],['accepted','=','1'],['client_type','=','export']])->get()]);
+            }else{
+                return view('panel.production.index', ['orders' => Order::where([['archive','=','0'],['accepted','=','1'],['client_type','=','export']])->get()]);
+            }
         }
     }
 

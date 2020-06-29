@@ -80,7 +80,7 @@ class OrderPositionController extends Controller
     {
         $orderPosition = OrderPosition::findOrFail($id);
 
-        $orderPosition->status = "zrobione";
+        $orderPosition->status = "zrealizowane";
         $orderPosition->save();
 
         $this->updateThisDoneQuantity($orderPosition->order_id,$orderPosition->quantity);
@@ -102,10 +102,10 @@ class OrderPositionController extends Controller
     {
         $order = Order::findOrFail($order_id);
         $order->in_production_quantity = $order->in_production_quantity + $quantity;
-        $order->status = 'w produkcji';
+        $order->status = 'w trakcie realizacji';
 
         $mainOrder = MainOrder::where('dok_id', '=', $order->main_order_id)->first();
-        $mainOrder->status = 'w produkcji';
+        $mainOrder->status = 'w trakcie realizacji';
 
         $mainOrder->save();
         $order->save();
@@ -120,19 +120,20 @@ class OrderPositionController extends Controller
         if(($order->quantity - $order->done_quantity) == 0)
         {
             $order->archive = '1';
-            $order->status = "gotowe";
+            $order->status = "zrealizowane";
         }
         $mainOrder = MainOrder::where('dok_id', '=', $order->main_order_id)->first();
-        $mainOrder->done_quantity += $quantity;
-        dd($mainOrder->quantity - $mainOrder->doneQuantity+'     '+$mainOrder->quantity - $mainOrder->doneQuantity - $quantity);
-        if($mainOrder->quantity - $mainOrder->doneQuantity == 0)
-        {
-            $mainOrder->archive = '1';
-            $mainOrder->status = 'gotowe';
-        }
 
-        $mainOrder->save();
         $order->save();
 
+        $tmp = $mainOrder->done_quantity + $quantity;
+
+        if($mainOrder->quantity == $tmp )
+        {
+            $mainOrder->archive = '1';
+            $mainOrder->status = 'zrealizowane';
+        }
+        $mainOrder->done_quantity += $quantity;
+        $mainOrder->save();
     }
 }

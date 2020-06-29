@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('product_id');
             $table->string('client');
+            $table->string('client_type')->nullable();
             $table->string('status')->default('nowe');
             $table->integer('product_type');
             $table->integer('quantity');

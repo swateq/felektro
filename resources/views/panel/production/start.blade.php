@@ -6,8 +6,9 @@
 @endpush
 
 @section('content')
-<div class="w-full mx-auto px-2">
-    <a href="/orders" class="btn-red" style="margin-left: 45%;">Zacznij realizację zlecenia</a>
+<div class="w-full mx-auto px-2 flex justify-center">
+    <a href="/orders" class="btn-red">Polska</a>
+    <a href="/orders/export" class="btn-blue ml-4">Export</a>
 </div>
 @endsection
 

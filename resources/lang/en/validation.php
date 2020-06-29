@@ -130,9 +130,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        array(
+            'accepted_date' => array(
+                'regex' => 'Format daty jest nieprawidłowy! Przykładowa poprawna data: 2020-06-25 08:00:00'
+            )
+        )
     ],
 
     /*
