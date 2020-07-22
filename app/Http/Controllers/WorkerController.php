@@ -36,10 +36,17 @@ class WorkerController extends Controller
      */
     public function store(Request $request)
     {
-        Worker::create($request->all());
-        toast('Nowy pracownik dodany pomyślnie!','success')->autoClose(5000)->position('top-end')->timerProgressBar();
+        if(strlen($request->name) > 2)
+        {
+            Worker::create($request->all());
+            toast('Nowy pracownik dodany pomyślnie!','success')->autoClose(5000)->position('top-end')->timerProgressBar();
+            return redirect('/admin/workers');
+        }
 
-        return redirect('/admin/workers');
+        toast('Podaj minimalnie 3 znaki!','warning')->autoClose(5000)->position('top-end')->timerProgressBar();
+
+        return back();
+
     }
 
     /**

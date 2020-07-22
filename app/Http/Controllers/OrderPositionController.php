@@ -84,7 +84,7 @@ class OrderPositionController extends Controller
         $orderPosition->save();
 
         $this->updateThisDoneQuantity($orderPosition->order_id,$orderPosition->quantity);
-        return redirect()->back();
+        return redirect('/');
     }
 
     /**
