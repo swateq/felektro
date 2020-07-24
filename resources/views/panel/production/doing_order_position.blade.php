@@ -29,7 +29,7 @@
                 <td>{{ $order_position->quantity }}</td>
                 <td>{{ $order_position->status }}</td>
                 <td>
-                    @if ($order_position->status != "zrobione")
+                    @if ($order_position->status != "zrealizowane")
                         <form action="/order_position/done/{{ $order_position->id }}" method="post">
                             @csrf
                             <button type="submit" class="btn-green">Zrobione</button>

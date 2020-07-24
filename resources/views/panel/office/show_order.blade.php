@@ -35,7 +35,7 @@
     @else
         Nikt aktualnie nie realizuje tego zlecenia
     @endif
-        <a href="http://localhost:8001/addpw/{{ $order->product_id }}/{{ $order->quantity }}" class="btn-green">Wywołaj PW</a>
+        <a href="http://192.168.50.50:8001/addpw/{{ $order->product_id }}/{{ $order->quantity }}" class="btn-green">Wywołaj PW</a>
 </div>
 @endsection
 

@@ -17,7 +17,6 @@
 <div class="container w-full mx-auto px-2">
     <div class="mb-8">
         <a href="/" class="btn-blue">Aktualne</a>
-        <a href="/?archive" class="btn-green">Archiwalne</a>
     </div>
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
